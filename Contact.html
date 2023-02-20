@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us</title>
+  <link rel="shortcut icon" type="image/png" href="contact.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <style>
+/* Google Font CDN Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins" , sans-serif;
+}
+body{
+  height: 10vh;
+  display: absolute;
+  background: #2f283b;
+}
+
+nav{
+  background: #000000;
+  padding: 0px 40px;
+}
+nav ul{
+  
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+nav ul li{
+  padding: 15px 0;
+  cursor: pointer;
+}
+nav ul li.items{
+  position: relative;
+  width: auto;
+  margin: 0 16px;
+  text-align: center;
+  order: 3;
+}
+nav li a:before{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: #44f84d;
+  border-radius: 12px;
+  transition: all 0.4s ease;
+}
+nav li a:hover:before{
+  width: 100%;
+}
+nav li.center a:before{
+  left: 50%;
+  transform: translateX(-50%);
+}
+nav li.upward a:before{
+  width: 100%;
+  bottom: -5px;
+  opacity: 0;
+}
+nav li.upward a:hover:before{
+  bottom: 0px;
+  opacity: 1;
+}
+nav li.forward a:before{
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease;
+}
+nav li.forward a:hover:before{
+  transform: scaleX(1);
+  transform-origin: left;
+}
+nav ul li.logo{
+  flex: 1;
+  color: white;
+  font-size: 35px;
+  font-weight: 600;
+  cursor: default;
+  user-select: none;
+  margin-left: 35px;
+}
+nav ul li a{
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  transition: .4s;
+}
+nav ul li:hover a{
+  color: #44f84d;
+}
+nav ul li i{
+  font-size: 23px;
+}
+nav ul li.btn{
+  display: none;
+}
+nav ul li.btn.hide i:before{
+  content: '\f00d';
+}
+.container{
+  width: 88%;
+  margin-top: 10px;
+  margin-left: 65px;
+  background: #fff;
+  border-radius: 6px;
+  padding: 20px 60px 30px 40px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.container .content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container .content .left-side{
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  position: relative;
+}
+.content .left-side::before{
+  content: '';
+  position: absolute;
+  height: 70%;
+  width: 2px;
+  right: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #afafb6;
+}
+.content .left-side .details{
+  margin: 14px;
+  text-align: center;
+}
+.content .left-side .details i{
+  font-size: 30px;
+  color: #3e2093;
+  margin-bottom: 10px;
+}
+.content .left-side .details .topic{
+  font-size: 18px;
+  font-weight: 500;
+}
+.content .left-side .details .text-one,
+.content .left-side .details .text-two{
+  font-size: 14px;
+  color: #afafb6;
+}
+.container .content .right-side{
+  width: 75%;
+  margin-left: 75px;
+}
+.content .right-side .topic-text{
+  font-size: 23px;
+  font-weight: 600;
+  color: #3e2093;
+}
+.right-side .input-box{
+  height: 50px;
+  width: 100%;
+  margin: 12px 0;
+}
+.right-side .input-box input,
+.right-side .input-box textarea{
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: #F0F1F8;
+  border-radius: 6px;
+  padding: 0 15px;
+  resize: none;
+}
+.right-side .message-box{
+  min-height: 110px;
+}
+.right-side .input-box textarea{
+  padding-top: 6px;
+}
+button{
+  width: 140px;
+  height: 50px;
+  color: #ffffff;
+  background: #7002ff;
+  border-radius: 5px;
+  font-size: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-family: Verdana;
+
+}
+button i{
+  font-size: 25px;
+}
+.fa-check{
+  border: 1px solid #f3f4f5;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  font-size: 12px;
+  line-height: 17px;
+}
+.fa-check.checked{
+  color: #63e6be;
+background: #183153;
+}
+button .btn-text{
+  margin-left: 7px;
+}
+.fa-circle-notch{
+  animation: animate 1s ease infinite;
+}
+@keyframes animate{
+  0%{
+    transform: rotate(0turn);
+  }
+  100%{
+    transform: rotate(1turn);
+  }
+}
+@media (max-width: 950px) {
+  .container{
+    width: 90%;
+    padding: 30px 40px 40px 35px ;
+  }
+  .container .content .right-side{
+   width: 75%;
+   margin-left: 55px;
+}
+}
+@media (max-width: 820px) {
+  .container{
+    margin: 30px 18px;
+    height: 1060px;
+  }
+  .container .content{
+    flex-direction: column-reverse;
+  }
+ .container .content .left-side{
+   width: 100%;
+   flex-direction: row;
+   margin-top: 40px;
+   justify-content: center;
+   flex-wrap: wrap;
+ }
+ .container .content .left-side::before{
+   display: none;
+ }
+ .container .content .right-side{
+   width: 100%;
+   margin-left: 0;
+ }
+nav{
+  padding: 5px 10px;
+}
+nav ul li.logo{
+  font-size: 23px;
+  margin-left: 2px;
+}
+nav ul li.items{
+  width: 100%;
+  display: none;
+}
+nav ul li.items.show{
+  display: block;
+}
+nav ul li.btn{
+  display: block;
+}
+nav ul li.items:hover{
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px #33ffff,
+              inset 0 0 10px #66ffff;
+}
+nav ul li.items:hover:after{
+  opacity: 0;
+}
+}
+</style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <img class="logo-img" src="logo.jpeg" width="85" height="85" alt="Logo" Align="margin-top" >
+       <li class="logo">CONTACT US</li>
+       <li class="items"><a href="https://stebinsabu.github.io/.com/">Home</a></li>
+       <li class="items"><a href="#">About</a></li>
+       <li class="items"><a href="https://stebinsabu.github.io/Gallery/">Gallery</a></li>
+       <li class="items"><a href="#">Contact</a></li>
+       <li class="btn"><a href="#"><i class="fas fa-bars"></i></a></li>
+    </ul>
+ </nav>
+
+  <div class="container">
+    <div class="content">
+      <div class="left-side">
+        <div class="address details">
+          <i class="fas fa-map-marker-alt"></i>
+          <div class="topic">Address</div>
+          <a href="https://maps.app.goo.gl/KSgjNyiAgAmj9PsG9">
+          <div class="text-one">Shop No-7,</div>
+          <div class="text-one">Parshva Shraddha Bldg.</div>
+          <div class="text-two">Near Surya Garden,</div>
+          <div class="text-two">Krishna Township,</div>
+          <div class="text-two">Vasai West</div>
+          </a>
+        </div>
+        <div class="phone details">
+          <i class="fas fa-phone-alt"></i>
+          <div class="topic">Phone</div>
+          <div class="text-one"><a href="tel:+919823220777">+91-9823-22-0777</a></div>
+          <div class="text-two"><a href="tel:+917709056648">+91-7709-05-6648</a></div>
+        </div>
+        <div class="email details">
+          <i class="fas fa-envelope"></i>
+          <div class="topic">Email</div>
+          <div class="text-one"><a href="mailto:stebinsabu40503@gmail.com">stebinsabu40503@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="right-side">
+        <div class="topic-text">Send us a message</div>
+        <p>If you have any work from me or any types of queries, you can send me message from here. It's my pleasure to
+          help you.</p> 
+        <form method="post">
+          <div class="input-box">
+            <input type="text" id="name" placeholder="Enter your name" required>
+          </div>
+          <div class="input-box">
+            <input type="email" id="email" placeholder="Enter your email id" required>
+          </div>
+          <div class="input-box message-box">
+            <textarea id="message" placeholder="Enter your queries..." cols="30" rows="10"></textarea>
+          </div>
+            <button id="btn">
+              <i class="fas fa-check"></i>
+              <!--<i class="fas fa-circle-notch">-->
+              <h5><span class="btn-text">Send</span></h5>
+            </button>
+      </form>
+      <div class="svg">
+      <iframe src="https://embed.lottiefiles.com/animation/118963" hidden></iframe></div>
+      </div>
+    </div>
+  </body>
+ <script src="https://smtpjs.com/v3/smtp.js"></script>
+ <script>
+  btn = document.querySelector("button"),
+  spinner = document.querySelector(".fa-circle-notch"),
+  icon = document.querySelector("i"),
+  btnText = document.querySelector(".btn-text");
+
+  btn.onclick = function(){
+    btn.style.cursor="wait";
+    btnText.textContent="";
+    btnText.style.margin=0;
+    icon.classList.replace("fa-check","fa-circle-notch");
+    
+    setTimeout(() => {
+      btn.style.pointerEvents="none";
+      btnText.textContent="Sent";
+      icon.classList.replace("fa-circle-notch","fa-check");
+      icon.classList.add("checked");
+      btnText.style = "margin-left: 7px";
+    },1000);//1000=1s
+  }
+ </script>
+
+ <script>
+  var btn = document.getElementById('btn');
+  btn.addEventListener('click',function(e){
+    e.preventDefault()
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var message = document.getElementById('message').value;
+
+  Email.send({
+    SecureToken: "ba3f4926-1993-47ff-a1a1-4df5a4afbf01",
+    From : 'stebinsteel@gmail.com',
+    To: 'stebinsteel@gmail.com',
+    ReplyFrom : document.getElementById("email").value,
+    /*Cc: 'albintharayil123@gmail.com',*/
+    Subject: "New Enquiry on Contact Form",
+    Body : "Name: " + document.getElementById("name").value
+          + "<br> Email: " + document.getElementById("email").value
+          + "<br> Message: " + document.getElementById("message").value
+  })
+  .then (
+    message => alert('Your mail has been sent successfully. Thank you for Contacting Us. We will get back to you soon!!!')
+  );
+})  
+ </script>
+<script>
+  $(document).ready(function(){
+    $('.btn').click(function(){
+      $('.items').toggleClass("show");
+      $('ul li').toggleClass("hide");
+    });
+  });
+</script> 
+</html>
